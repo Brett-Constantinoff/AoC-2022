@@ -1,0 +1,11 @@
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**Makefile
+**.DS_Store
+**.a
+**.make
+Day/bin
+Days/bin-int
+.vs/
+.vscode
