@@ -7,10 +7,10 @@ class Day1
 {
 public:
 	Day1(const std::string& file);
-	virtual ~Day1();
+	~Day1();
 
-	virtual void Question1();
-	virtual void Question2();
+	void Question1();
+	void Question2();
 
 private:
 	void GetCalPerElf();
