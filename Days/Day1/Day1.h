@@ -3,7 +3,7 @@
 #include <vector>
 #include "../Common.h"
 
-class Day1
+class Day1 
 {
 public:
 	Day1(const std::string& file);

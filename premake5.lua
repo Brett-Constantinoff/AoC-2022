@@ -14,4 +14,5 @@ workspace "AoC-2022"
 
 
 include "Days/Day1/Day1.lua"
+include "Days/Day2/Day2.lua"
     
