@@ -1,6 +1,7 @@
 #include "Day1.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 Day1::Day1(const std::string& file)
 {
