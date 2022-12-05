@@ -26,7 +26,6 @@ private:
 	void PrintSolution(std::vector<std::stack<char>> &stacks);
 
 private:
-	int32_t m_stacksNum;
 	std::vector<std::string> m_stackData;
 	std::vector<std::string> m_instructions;
 	std::vector<std::string> m_inputData;
