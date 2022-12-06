@@ -1,6 +1,8 @@
 #include "Day5.h"
 #include <iostream>
 #include <fstream>
+#include <boost/tokenizer.hpp>
+#include <boost/lexical_cast.hpp>
 
 Day5::Day5(const std::string& file)
 {
@@ -30,24 +32,22 @@ Day5::~Day5()
 
 void Day5::Question1()
 {
-	std::vector<std::stack<char>> stacks{m_stacks};
 	for (std::string s : m_instructions) 
 	{
 		Instruction i = GetInstruction(s);
-		MoveCrates(stacks, i, false);
+		MoveCrates(m_stacks, i, false);
 	}
-	PrintSolution(stacks);
+	PrintSolution(m_stacks);
 }
 
 void Day5::Question2()
 {
-	std::vector<std::stack<char>> stacks{m_stacks};
 	for (std::string s : m_instructions) 
 	{
 		Instruction i = GetInstruction(s);
-		MoveCrates(stacks, i, true);
+		MoveCrates(m_stacks, i, true);
 	}
-	PrintSolution(stacks);
+	PrintSolution(m_stacks);
 }
 
 void Day5::MakeStacks()
@@ -67,21 +67,22 @@ void Day5::MakeStacks()
 Instruction Day5::GetInstruction(std::string &s) 
 {
 	Instruction i{};
-	std::stringstream ss{s};
-	std::string temp{};
-	int32_t num{};
-	while (!ss.eof()) 
+	boost::tokenizer<> tokens(s);
+	boost::tokenizer<>::iterator it = tokens.begin();
+
+	for (const auto &t : tokens)
 	{
-		ss >> temp;
-		if (std::stringstream{temp} >> num) 
+		try
 		{
-			if (i.amount == -1) i
-				.amount = num;
-			else if (i.from == -1) 
+			int32_t num = boost::lexical_cast<int32_t>(t);
+			if (i.amount == 1)
+				i.amount = num;
+			else if (i.from == -1)
 				i.from = num;
-			else if (i.to == -1) 
+			else
 				i.to = num;
 		}
+		catch(...){};
 	}
 	return i;
 }
@@ -98,6 +99,7 @@ void Day5::MoveCrates(std::vector<std::stack<char>> &stacks, Instruction &i, boo
 		{
 			for (auto it = temp.rbegin(); it != temp.rend(); it++) 
 				stacks[i.to - 1].push(*it);
+			
 		}
 		else
 		{

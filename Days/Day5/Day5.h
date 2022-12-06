@@ -3,6 +3,8 @@
 #include <vector>
 #include <stack>
 #include <sstream>
+#include <boost/tokenizer.hpp>
+#include <boost/lexical_cast.hpp>
 #define STACKS 9
 
 struct Instruction
