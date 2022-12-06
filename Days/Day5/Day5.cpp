@@ -52,13 +52,14 @@ void Day5::Question2()
 
 void Day5::MakeStacks()
 {
+	std::size_t max = 0;
 	for (int32_t i = 0; i < STACKS; i++) 
 	{
-		std::stack<char> s;
-		for(auto it = m_stackData.rbegin(); it != m_stackData.rend(); it++) 
+		std::string s;
+		for(auto it = m_stackData.begin(); it != m_stackData.end(); it++) 
 		{
 			if ((*it)[i * 4 + 1] != ' ') 
-				s.push((*it)[i * 4 + 1]);
+				s += (*it)[i * 4 + 1];
 		}
 		m_stacks.push_back(s);
 	}
@@ -75,7 +76,7 @@ Instruction Day5::GetInstruction(std::string &s)
 		try
 		{
 			int32_t num = boost::lexical_cast<int32_t>(t);
-			if (i.amount == 1)
+			if (i.amount == -1)
 				i.amount = num;
 			else if (i.from == -1)
 				i.from = num;
@@ -87,30 +88,22 @@ Instruction Day5::GetInstruction(std::string &s)
 	return i;
 }
 
-void Day5::MoveCrates(std::vector<std::stack<char>> &stacks, Instruction &i, bool preserveOrder)
+void Day5::MoveCrates(std::vector<std::string> &stacks, Instruction &i, bool preserveOrder)
 {
-		std::vector<char> temp;
-		for (int32_t amount = 0; amount < i.amount; amount++)
-		{
-			temp.push_back(stacks[i.from - 1].top());
-			stacks[i.from - 1].pop();
-		}
-		if (preserveOrder)
-		{
-			for (auto it = temp.rbegin(); it != temp.rend(); it++) 
-				stacks[i.to - 1].push(*it);
-			
-		}
-		else
-		{
-			for (auto it = temp.begin(); it != temp.end(); it++) 
-				stacks[i.to - 1].push(*it);
-		}		
+	if (i.amount == -1 || i.from == -1 || i.to == -1)
+		return;
+	std::string moved = stacks[i.from - 1].substr(0, i.amount);
+	if (!preserveOrder)
+		moved.reserve();
+	stacks[i.to - 1] = moved + stacks[i.to - 1];
+	stacks[i.from - 1].erase(0, i.amount);
 }
 
-void Day5::PrintSolution(std::vector<std::stack<char>> &stacks)
+void Day5::PrintSolution(std::vector<std::string> &stacks)
 {
-	for (int32_t i = 0; i < STACKS; i++) 
-		std::cout << stacks[i].top();
+	for (auto s : stacks)
+	{
+		std::cout << s[0];
+	}
 	std::cout << std::endl;
 }

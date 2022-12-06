@@ -1,10 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <stack>
 #include <sstream>
-#include <boost/tokenizer.hpp>
-#include <boost/lexical_cast.hpp>
 #define STACKS 9
 
 struct Instruction
@@ -24,12 +21,12 @@ public:
 private:
 	void MakeStacks();
 	Instruction GetInstruction(std::string &s);
-	void MoveCrates(std::vector<std::stack<char>> &stacks, Instruction &i, bool preserveOrder);
-	void PrintSolution(std::vector<std::stack<char>> &stacks);
+	void MoveCrates(std::vector<std::string> &stacks, Instruction &i, bool preserveOrder);
+	void PrintSolution(std::vector<std::string> &stacks);
 
 private:
 	std::vector<std::string> m_stackData;
 	std::vector<std::string> m_instructions;
 	std::vector<std::string> m_inputData;
-	std::vector<std::stack<char>> m_stacks;
+	std::vector<std::string> m_stacks;
 };
