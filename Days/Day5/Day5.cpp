@@ -51,11 +51,8 @@ void Day5::Question2()
 	PrintSolution(m_stacksCpy);
 }
 
-
-
 void Day5::MakeStacks()
 {
-	std::size_t max = 0;
 	for (int32_t i = 0; i < STACKS; i++) 
 	{
 		std::string s;
@@ -73,8 +70,7 @@ Instruction Day5::GetInstruction(std::string &s)
 {
 	Instruction i{};
 	boost::tokenizer<> tokens(s);
-	boost::tokenizer<>::iterator it = tokens.begin();
-
+	
 	for (const auto &t : tokens)
 	{
 		try
