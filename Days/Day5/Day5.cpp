@@ -1,5 +1,6 @@
 #include "Day5.h"
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <boost/tokenizer.hpp>
 #include <boost/lexical_cast.hpp>
@@ -45,10 +46,12 @@ void Day5::Question2()
 	for (std::string s : m_instructions) 
 	{
 		Instruction i = GetInstruction(s);
-		MoveCrates(m_stacks, i, true);
+		MoveCrates(m_stacksCpy, i, true);
 	}
-	PrintSolution(m_stacks);
+	PrintSolution(m_stacksCpy);
 }
+
+
 
 void Day5::MakeStacks()
 {
@@ -62,6 +65,7 @@ void Day5::MakeStacks()
 				s += (*it)[i * 4 + 1];
 		}
 		m_stacks.push_back(s);
+		m_stacksCpy.push_back(s);
 	}
 }
 
@@ -94,7 +98,7 @@ void Day5::MoveCrates(std::vector<std::string> &stacks, Instruction &i, bool pre
 		return;
 	std::string moved = stacks[i.from - 1].substr(0, i.amount);
 	if (!preserveOrder)
-		moved.reserve();
+		std::reverse(moved.begin(), moved.end());
 	stacks[i.to - 1] = moved + stacks[i.to - 1];
 	stacks[i.from - 1].erase(0, i.amount);
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <sstream>
 #define STACKS 9
 
 struct Instruction
@@ -29,4 +28,5 @@ private:
 	std::vector<std::string> m_instructions;
 	std::vector<std::string> m_inputData;
 	std::vector<std::string> m_stacks;
+	std::vector<std::string> m_stacksCpy;
 };

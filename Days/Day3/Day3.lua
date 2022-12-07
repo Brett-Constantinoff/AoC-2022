@@ -1,7 +1,7 @@
 project "Day3"
     kind "ConsoleApp"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++17"
 	architecture "x64"
 
     targetdir "../bin/Day3/%{cfg.buildcfg}"
