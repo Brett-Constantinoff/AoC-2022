@@ -66,7 +66,7 @@ bool Day8::CheckVisible(char i, char j, int32_t& view)
 
 bool Day8::VisibleAbove(int32_t index, int32_t& view)
 {
-	int64_t i = index;
+	int64_t i{index};
 	i -= m_rows;
 	while (i > 0)
 	{
@@ -79,7 +79,7 @@ bool Day8::VisibleAbove(int32_t index, int32_t& view)
 
 bool Day8::VisibleBelow(int32_t index, int32_t& view)
 {
-	int64_t i = index;
+	int64_t i{index};
 	i += m_rows;
 	while (i < m_inputData.size())
 	{
@@ -92,7 +92,7 @@ bool Day8::VisibleBelow(int32_t index, int32_t& view)
 
 bool Day8::VisibleRight(int32_t index, int32_t& view)
 {
-	int64_t i = index;
+	int64_t i{index};
 	while (i++ % m_coloumns != m_coloumns - 1)
 	{
 		if (!CheckVisible(m_inputData[i], m_inputData[index], view))
@@ -103,7 +103,7 @@ bool Day8::VisibleRight(int32_t index, int32_t& view)
 
 bool Day8::VisibleLeft(int32_t index, int32_t& view)
 {
-	int64_t i = index;
+	int64_t i{index};
 	while (i-- % m_coloumns != 0)
 	{
 		if (!CheckVisible(m_inputData[i], m_inputData[index], view))
