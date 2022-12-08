@@ -25,7 +25,7 @@ Day8::~Day8()
 
 void Day8::Question1()
 {
-	for (int32_t i = 0; i < m_inputData.length(); i++)
+	for (int32_t i{0}; i < m_inputData.length(); i++)
 	{
 		int32_t up{}, down{}, left{}, right{};
 		bool visible{false};
