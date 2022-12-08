@@ -5,7 +5,7 @@
 Day8::Day8(const std::string& file)
 {
 	std::ifstream fileData{ file };
-	std::string fileLine;
+	std::string fileLine{};
 	if (!fileData.is_open()) 
 		exit(EXIT_FAILURE);
 	int32_t rows{0};
@@ -16,7 +16,7 @@ Day8::Day8(const std::string& file)
 			m_coloumns = fileLine.length();
 		rows++;
 	}
-	m_rows = rows;
+	m_rows{rows};
 }
 
 Day8::~Day8()
