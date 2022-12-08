@@ -30,9 +30,8 @@ void Day8::Question1()
 		int32_t up{}, down{}, left{}, right{};
 		bool visible{false};
 		bool edge = i <= m_rows - 1 	|| i >= m_inputData.length() - m_rows ||
-				    i % m_coloumns == 0 || i % m_coloumns == m_coloumns - 1;
-		if (edge)
-			m_visible++;
+			    i % m_coloumns == 0 || i % m_coloumns == m_coloumns - 1;
+		if (edge) m_visible++;
 		else
 		{
 			if (VisibleAbove(i, up)) visible = true;
