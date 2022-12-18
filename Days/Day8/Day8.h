@@ -19,7 +19,7 @@ private:
 	bool VisibleLeft(int32_t index, int32_t& view);
 
 private:
-	std::string m_inputData;
+	std::string m_inputData{};
 	int32_t m_visible{};
 	int32_t m_maxView{};
 	int32_t m_rows{-1};
